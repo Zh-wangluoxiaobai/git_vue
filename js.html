@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    async function async1() {
+        console.log("a");//第二个
+        await async2()
+        console.log("b");//第六个
+    }
+    async function async2() {
+        console.log("c");//第三个
+    }
+    
+    console.log("d");//毋庸置疑打印第一个
+
+
+    setTimeout(() => {
+        console.log("e");//最后一个
+    }, 0)
+    async1()
+    new Promise(function(resolve){
+        console.log("f");//第四个
+        resolve()
+    }).then(function(){
+        console.log("g");//第七个
+    })
+
+
+    console.log("h");//第五个
+</script>
+
+</html>
